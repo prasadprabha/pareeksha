@@ -13,7 +13,7 @@ public class AdminLogOutController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView logOut(HttpSession session) {
 		session.invalidate();
-		return new ModelAndView("redirect:adminlogin.html");
+		return new ModelAndView("redirect:/forms/user/userlogin.html");
 	}
 
 }

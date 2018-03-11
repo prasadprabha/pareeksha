@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<div class="container-fluid">
+
  <h1 align="center" >Online Test Application</h1>
  <hr width=600 >
  <form:form commandName="user" action="userlogin.html" >
@@ -45,6 +48,6 @@
   </tr> 
  </table>
  </form:form> 
-
+</div>
 </body>
 </html>

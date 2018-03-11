@@ -25,7 +25,7 @@
   </td>
   <td>
     <form:select path="languageId">
-     <form:option label="--Select Language--" value="-1" />
+     <form:option label="--Select Exam--" value="-1" />
      <form:options items="${languagelist}" itemLabel="languageName" itemValue="languageId" />     	
     </form:select>  
   </td>

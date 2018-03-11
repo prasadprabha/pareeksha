@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.exam.dao.LanguageDao;
 import com.exam.model.Language;
-import com.exam.model.User;
 
 @Repository("languageDao")
 public class LanguageDaoImpl implements LanguageDao {
@@ -26,4 +25,28 @@ public class LanguageDaoImpl implements LanguageDao {
 				"from Language where languageId=:languageId").setParameter(
 				"languageId", languageId).list();
 	}
+	
+	
+	@Override
+	public Language saveLanguage(Language language) {
+		sessionFactory.getCurrentSession().save(language);
+		return language;
+	}
+
+	@Override
+	public Language updateLanguage(Language language) {
+		int result = sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"UPDATE Language SET lang_name=:lang_name where languageId=:languageId")
+				.setParameter("languageId", language.getLanguageId())
+				.setParameter("lang_name", language.getLanguageName())
+				.executeUpdate();
+		if (result > 0) {
+			return language;
+		}
+		
+		return language;
+	}
+
 }

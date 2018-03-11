@@ -9,7 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4 align="center"><a href="questionlist.html">Question list</a>&nbsp;&nbsp;
+<h4 align="center">
+<a href="addexam.html">Add Exam</a>&nbsp;&nbsp;
+<a href="questionlist.html">Question list</a>&nbsp;&nbsp;
 <a href="addquestion.html">Add Question</a>&nbsp;&nbsp; <a
 	href="searchquestion.html">Search Question</a>&nbsp;&nbsp; <a
 	href="questionlist.html">Delete Question</a></h4>
@@ -21,13 +23,13 @@
 <form:form commandName="addQuestionForm">
 	<table align="center">
 		<tr>
-			<td><form:label path="languageId">Select Language :</form:label>
+			<td><form:label path="languageId">Select Exam :</form:label>
 			<font color="red"> <form:errors path="languageId"></form:errors>
 			</font></td>
 		</tr>
 		<tr>
 			<td><form:select path="languageId" style="width:205px">
-				<form:option label="--Select Language--" value="-1" />
+				<form:option label="--Select Exam--" value="-1" />
 				<form:options items="${languagelist}" itemLabel="languageName"
 					itemValue="languageId" />
 			</form:select></td>

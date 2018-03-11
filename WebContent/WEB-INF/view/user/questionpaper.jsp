@@ -69,7 +69,7 @@
   <core:if test="${empty questionPaperList}">
     <tr>
       <td>
-       <core:out value="Not Avaliable Any Question"></core:out>
+       <core:out value="No questions available in this exam"></core:out>
       </td> 
     </tr>
   </core:if>    

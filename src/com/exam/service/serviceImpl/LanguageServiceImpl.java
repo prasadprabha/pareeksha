@@ -25,4 +25,13 @@ public class LanguageServiceImpl implements LanguageService {
 		   return languageDao.getLanguageByLanguageId(languageId);
 	 }
 
+	
+	@Override
+	public Language updateLanguage(Language language) {
+		 return languageDao.updateLanguage(language);
+	}
+	
+	public Language saveLanguage(Language language) {
+		return languageDao.saveLanguage(language);
+	}
 }

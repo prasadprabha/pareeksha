@@ -9,6 +9,7 @@
 </head>
 <body>
 <h4 align="center" >
+	<a href="addexam.html">Add Exam</a>&nbsp;&nbsp;
    <a href="questionlist.html" >Question list</a>&nbsp;&nbsp;
    <a href="addquestion.html" >Add Question</a>&nbsp;&nbsp;
    <a href="searchquestion.html" >Search Question</a>&nbsp;&nbsp;
@@ -25,7 +26,7 @@
 <table align="center" >
  <tr>
    <th>
-     <core:out value="Language"></core:out>
+     <core:out value="Exam"></core:out>
    </th>
    <th>
      <core:out value="Question"></core:out>

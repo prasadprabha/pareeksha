@@ -41,7 +41,7 @@
   </tr>
   <tr>
     <td colspan="2">
-        <core:out value="Total Question"></core:out>
+        <core:out value="Total Questions"></core:out>
         <core:out value="${totalQuestion}"></core:out>
     </td>   
   </tr>
@@ -53,13 +53,13 @@
   </tr>
   <tr>
     <td colspan="2" >
-       <core:out value="Number of right answer : "></core:out>
+       <core:out value="Number of right answers : "></core:out>
        <core:out value="${rightAnswer}"></core:out>
    </td>   
   </tr>
   <tr>
     <td colspan="2" >
-      <core:out value="Number of wrong answer : "></core:out>
+      <core:out value="Number of wrong answers : "></core:out>
       <core:out value="${wongAnswer}"></core:out>
     </td>   
   </tr>
