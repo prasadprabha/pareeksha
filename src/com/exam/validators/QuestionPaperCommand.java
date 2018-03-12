@@ -2,7 +2,7 @@ package com.exam.validators;
 
 public class QuestionPaperCommand {
 	private Long questionId;
-	private String languageName;
+	private String examName;
 	private String question;
 	private Long option1Id;
 	private String option1;
@@ -22,11 +22,11 @@ public class QuestionPaperCommand {
 		   return questionId;
 	  }	
 	
-	public void setLanguageName(String languageName){
-		   this.languageName = languageName;
+	public void setExamName(String examName){
+		   this.examName = examName;
      }
-	public String getLanguageName(){
-		   return languageName;
+	public String getExamName(){
+		   return examName;
      }
 	
 	public void setQuestion(String question){

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.exam.model.Admin;
 import com.exam.model.Questions;
-import com.exam.service.LanguageService;
+import com.exam.service.ExamService;
 import com.exam.service.QuestionOptionsService;
 import com.exam.service.QuestionsService;
 
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/admin/deletequestion")
 public class DeleteQuestionController {
 	@Autowired
-	private LanguageService languageService;
+	private ExamService examService;
 	@Autowired
 	private QuestionsService questionsService;
 	@Autowired
@@ -36,7 +36,7 @@ public class DeleteQuestionController {
 			// return "/admin/adminlogin";
 			return new ModelAndView("redirect:adminlogin.html");
 		}
-		model.put("languagelist", languageService.listLanguages());
+		model.put("examlist", examService.listExams());
 		String questionIdInString = request.getParameter("questionId");
 		if (questionIdInString != null && (!questionIdInString.equals(""))) {
 			Questions questions = new Questions();
@@ -45,7 +45,7 @@ public class DeleteQuestionController {
 			questionOptionsService.deleteQuestionOptionsByQuestionId(Long
 					.parseLong(questionIdInString));
 		}
-		return new ModelAndView("redirect:questionlist.html?languageId="
-				+ request.getParameter("languageId"));
+		return new ModelAndView("redirect:questionlist.html?examId="
+				+ request.getParameter("examId"));
 	}
 }

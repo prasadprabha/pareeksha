@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.exam.model.Admin;
 import com.exam.model.QuestionOptions;
 import com.exam.model.Questions;
-import com.exam.service.LanguageService;
+import com.exam.service.ExamService;
 import com.exam.service.QuestionOptionsService;
 import com.exam.service.QuestionsService;
 import com.exam.validators.AddQuestionForm;
@@ -28,7 +28,7 @@ import javax.validation.Valid;
 public class AddQuestionController {
 
 	@Autowired
-	private LanguageService languageService;
+	private ExamService examService;
     @Autowired
 	private AddQuestionValidator addQuestionValidator;
 	@Autowired
@@ -56,7 +56,7 @@ public class AddQuestionController {
 			if (questionlist != null && questionlist.size() > 0) {
 				Questions questions = (Questions) questionlist.get(0);
 				addQuestionForm.setQuestionId(questions.getQuestionId());
-				addQuestionForm.setLanguageId(questions.getLanguageId());
+				addQuestionForm.setExamId(questions.getExamId());
 				addQuestionForm.setQuestion(questions.getQuestion());
 
 				List questionoptionslist = questionOptionsService
@@ -102,7 +102,7 @@ public class AddQuestionController {
 		}
 		model.put("pageHeading", pageHeading);
 		model.put("addQuestionForm", addQuestionForm);
-		model.put("languagelist", languageService.listLanguages());
+		model.put("examlist", examService.listExams());
 		return "/admin/addquestion";
 	}
 
@@ -120,12 +120,12 @@ public class AddQuestionController {
 		// check all error
 		if (result.hasErrors()) {
 			model.put("pageHeading", pageHeading);
-			model.put("languagelist", languageService.listLanguages());
+			model.put("examlist", examService.listExams());
 			ModelAndView modelandview = new ModelAndView();
 			return new ModelAndView("/admin/addquestion");
 		} else {
 			Questions questions = new Questions();
-			questions.setLanguageId(addQuestionForm.getLanguageId());
+			questions.setExamId(addQuestionForm.getExamId());
 			questions.setQuestion(addQuestionForm.getQuestion());
 			// Add Question and Answer
 			if (addQuestionForm.getQuestionId() == null) {

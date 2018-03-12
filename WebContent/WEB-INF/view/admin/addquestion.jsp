@@ -23,15 +23,15 @@
 <form:form commandName="addQuestionForm">
 	<table align="center">
 		<tr>
-			<td><form:label path="languageId">Select Exam :</form:label>
-			<font color="red"> <form:errors path="languageId"></form:errors>
+			<td><form:label path="examId">Select Exam :</form:label>
+			<font color="red"> <form:errors path="examId"></form:errors>
 			</font></td>
 		</tr>
 		<tr>
-			<td><form:select path="languageId" style="width:205px">
+			<td><form:select path="examId" style="width:205px">
 				<form:option label="--Select Exam--" value="-1" />
-				<form:options items="${languagelist}" itemLabel="languageName"
-					itemValue="languageId" />
+				<form:options items="${examlist}" itemLabel="examName"
+					itemValue="examId" />
 			</form:select></td>
 		</tr>
 		<tr>

@@ -22,12 +22,12 @@ public class QuestionsDaoImpl implements QuestionsDao {
 	}
 
 	@Override
-	public List<Questions> getQuestionsByLanguageId(Long languageId) {
+	public List<Questions> getQuestionsByExamId(Long examId) {
 		return sessionFactory
 				.getCurrentSession()
 				.createQuery(
-						"from Questions where languageId=:languageId ORDER BY questionId DESC")
-				.setParameter("languageId", languageId).list();
+						"from Questions where examId=:examId ORDER BY questionId DESC")
+				.setParameter("examId", examId).list();
 	}
 
 	@Override
@@ -48,8 +48,8 @@ public class QuestionsDaoImpl implements QuestionsDao {
 		sessionFactory
 				.getCurrentSession()
 				.createQuery(
-						"UPDATE Questions SET languageId=:languageId ,question=:question , rightOption=:rightOption where questionId=:questionId")
-				.setParameter("languageId", questions.getLanguageId())
+						"UPDATE Questions SET examId=:examId ,question=:question , rightOption=:rightOption where questionId=:questionId")
+				.setParameter("examId", questions.getExamId())
 				.setParameter("question", questions.getQuestion())
 				.setParameter("rightOption", questions.getRightOption())
 				.setParameter("questionId", questions.getQuestionId())
@@ -65,12 +65,12 @@ public class QuestionsDaoImpl implements QuestionsDao {
 	}
 
 	@Override
-	public List<Questions> getTenRandomQuestionsByLanguageId(Long languageId) {
+	public List<Questions> getTenRandomQuestionsByExamId(Long examId) {
 		return (List<Questions>) sessionFactory
 				.getCurrentSession()
 				.createQuery(
-						"from Questions where languageId=:languageId order by rand()")
-				.setParameter("languageId", languageId).setMaxResults(10)
+						"from Questions where examId=:examId order by rand()")
+				.setParameter("examId", examId).setMaxResults(10)
 				.list();
 	}
 

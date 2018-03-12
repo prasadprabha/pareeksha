@@ -52,7 +52,7 @@
  </tr>
 <core:forEach var="questionPaperCommand" items="${allQuestionList}" >
      <tr> 
-       <td><core:out value="${questionPaperCommand.languageName}"></core:out></td>      
+       <td><core:out value="${questionPaperCommand.examName}"></core:out></td>      
        <td  >
          <a href="addquestion.html?questionId=${questionPaperCommand.questionId}" >
              <core:out value="${questionPaperCommand.question}" ></core:out>
@@ -66,7 +66,7 @@
            <core:out value="${questionPaperCommand.rightAnswer}"></core:out> 
        </td>
        <td>
-         <a href="deletequestion.html?questionId=${questionPaperCommand.questionId}&languageId=${languageId}" >
+         <a href="deletequestion.html?questionId=${questionPaperCommand.questionId}&examId=${examId}" >
              <core:out value="Delete"></core:out>
          </a>
        </td>                      

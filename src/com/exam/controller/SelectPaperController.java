@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.exam.model.Language;
+import com.exam.model.Exam;
 import com.exam.model.User;
-import com.exam.service.LanguageService;
+import com.exam.service.ExamService;
 
 import java.util.Map;
 
@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @RequestMapping("/user/selectpaper")
 public class SelectPaperController {
 	@Autowired
-	private LanguageService languageService;
+	private ExamService examService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String showSelectPaper(Map model, HttpSession session) {
@@ -28,25 +28,25 @@ public class SelectPaperController {
 			model.put("user", user);
 			return "/user/userlogin";
 		}
-		Language language = new Language();
-		model.put("language", language);
-		model.put("languagelist", languageService.listLanguages());
+		Exam exam = new Exam();
+		model.put("exam", exam);
+		model.put("examlist", examService.listExams());
 		return "/user/selectpaper";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processSelectPaper(@Valid Language language, Map model,
+	public ModelAndView processSelectPaper(@Valid Exam exam, Map model,
 			HttpSession session) {
 		if ((session.getAttribute("userEmail")) == null) {
 			return new ModelAndView("redirect:userlogin.html");
 		}
-		Long languageId = language.getLanguageId();
-		if (languageId == -1) {
-			model.put("languagelist", languageService.listLanguages());
-			model.put("errormessage", "Select Language");
+		Long examId = exam.getExamId();
+		if (examId == -1) {
+			model.put("examlist", examService.listExams());
+			model.put("errormessage", "Select Exam");
 			return new ModelAndView("/user/selectpaper");
 		}
-		return new ModelAndView("redirect:questionpaper.html?languageId="
-				+ language.getLanguageId());
+		return new ModelAndView("redirect:questionpaper.html?examId="
+				+ exam.getExamId());
 	}
 }

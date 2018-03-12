@@ -39,14 +39,14 @@ public class QuestionPaperController {
 		}
 		List questionPaperList = new ArrayList();
 		List questonIdList = new ArrayList();
-		String languageIdInString = request.getParameter("languageId");
-		if (languageIdInString != null) {
-			Long languageId = Long.parseLong(languageIdInString);
+		String examIdInString = request.getParameter("examId");
+		if (examIdInString != null) {
+			Long examId = Long.parseLong(examIdInString);
 			QuestionPaperCommand questionPaperCommand1 = new QuestionPaperCommand();
 			// List
-			// questionlist=questionsService.getQuestionsByLanguageId(languageId);
+			// questionlist=questionsService.getQuestionsByExamId(examId);
 			List questionlist = questionsService
-					.getTenRandomQuestionsByLanguageId(languageId);
+					.getTenRandomQuestionsByExamId(examId);
 
 			for (int i = 0; i < questionlist.size(); i++) {
 				List questionOptionsList = new ArrayList();

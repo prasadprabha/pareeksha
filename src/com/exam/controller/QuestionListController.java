@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.exam.model.Language;
+import com.exam.model.Exam;
 import com.exam.model.QuestionOptions;
 import com.exam.model.Questions;
-import com.exam.service.LanguageService;
+import com.exam.service.ExamService;
 import com.exam.service.QuestionOptionsService;
 import com.exam.service.QuestionsService;
 import com.exam.validators.QuestionPaperCommand;
@@ -29,7 +29,7 @@ public class QuestionListController {
 	@Autowired
 	private QuestionOptionsService questionOptionsService;
 	@Autowired
-	private LanguageService languageService;
+	private ExamService examService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView showQuestionList(Map model, HttpServletRequest request,
@@ -40,11 +40,11 @@ public class QuestionListController {
 		List allQuestionList = new ArrayList();
 		List questionlist = new ArrayList();
 
-		String languageIdInString = request.getParameter("languageId");
-		if (languageIdInString != null && (!languageIdInString.equals(""))) {
-			questionlist = questionsService.getQuestionsByLanguageId(Long
-					.parseLong(languageIdInString));
-			model.put("languageId", Long.parseLong(languageIdInString));
+		String examIdInString = request.getParameter("examId");
+		if (examIdInString != null && (!examIdInString.equals(""))) {
+			questionlist = questionsService.getQuestionsByExamId(Long
+					.parseLong(examIdInString));
+			model.put("examId", Long.parseLong(examIdInString));
 		} else {
 			questionlist = questionsService.listQuestions();
 		}
@@ -57,12 +57,12 @@ public class QuestionListController {
 			questionPaperCommand.setQuestionId(questions.getQuestionId());
 			questionPaperCommand.setQuestion(questions.getQuestion());
 
-			List languagelist = languageService
-					.getLanguageByLanguageId(questions.getLanguageId());
-			if (languagelist != null && languagelist.size() > 0) {
-				Language language = (Language) languagelist.get(0);
+			List examList = examService
+					.getExamByExamId(questions.getExamId());
+			if (examList != null && examList.size() > 0) {
+				Exam exam = (Exam) examList.get(0);
 				questionPaperCommand
-						.setLanguageName(language.getLanguageName());
+						.setExamName(exam.getExamName());
 			}
 
 			questionOptionsList = questionOptionsService

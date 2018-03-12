@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class AddQuestionForm {
 	   private Long  questionId;
-	   private Long languageId;
+	   private Long examId;
 	   @NotEmpty
 	   private String question;
 	   private Long rightOption;
@@ -24,11 +24,11 @@ public class AddQuestionForm {
 		      return questionId;
 		 }
 	   
-	   public void setLanguageId(Long languageId) {
-		      this.languageId = languageId;
+	   public void setExamId(Long examId) {
+		      this.examId = examId;
 		 }
-	   public Long getLanguageId() {
-		      return languageId;
+	   public Long getExamId() {
+		      return examId;
 		}
 	   
 	   public void setQuestion(String question){

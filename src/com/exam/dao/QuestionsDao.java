@@ -8,7 +8,7 @@ import com.exam.model.User;
 public interface QuestionsDao {
 	public List<Questions> listQuestions();
 
-	public List<Questions> getQuestionsByLanguageId(Long languageId);
+	public List<Questions> getQuestionsByExamId(Long examId);
 
 	public List<Questions> getQuestionsByQuestionId(Long questionId);
 
@@ -18,6 +18,6 @@ public interface QuestionsDao {
 
 	public void deleteQuestions(Questions questions);
 
-	public List<Questions> getTenRandomQuestionsByLanguageId(Long languageId);
+	public List<Questions> getTenRandomQuestionsByExamId(Long examId);
 
 }

@@ -40,7 +40,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 		<property name="annotatedClasses">
 			<list>
 				<value>com.exam.model.User</value>
-				<value>com.exam.model.Language</value>
+				<value>com.exam.model.Exam</value>
 				<value>com.exam.model.Questions</value>
 				<value>com.exam.model.QuestionOptions</value>
 				<value>com.exam.model.Admin</value>

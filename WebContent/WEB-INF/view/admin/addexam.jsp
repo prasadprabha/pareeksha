@@ -24,14 +24,14 @@
 	<table align="center">
 	
 		<tr>
-			<td><form:input type="hidden" path="languageId" size="30" /></td>
+			<td><form:input type="hidden" path="examId" size="30" /></td>
 		</tr>
 		<tr>
-			<td><form:label path="languageName">Enter Exam Name :</form:label> <font
-				color="red"> <form:errors path="languageName"></form:errors> </font></td>
+			<td><form:label path="examName">Enter Exam Name :</form:label> <font
+				color="red"> <form:errors path="examName"></form:errors> </font></td>
 		</tr>
 		<tr>
-			<td><form:input path="languageName" size="30" /></td>
+			<td><form:input path="examName" size="30" /></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="Submit" /></td>

@@ -17,16 +17,16 @@
   <%} %>&nbsp;
   <a href="logout.thml" >LogOut</a> 
 </div>
- <form:form commandName="language"   action="selectpaper.html" >
+ <form:form commandName="exam"   action="selectpaper.html" >
  <table align="center" >
  <tr>
   <td>
    Select Paper:
   </td>
   <td>
-    <form:select path="languageId">
+    <form:select path="examId">
      <form:option label="--Select Exam--" value="-1" />
-     <form:options items="${languagelist}" itemLabel="languageName" itemValue="languageId" />     	
+     <form:options items="${examlist}" itemLabel="examName" itemValue="examId" />     	
     </form:select>  
   </td>
  </tr>

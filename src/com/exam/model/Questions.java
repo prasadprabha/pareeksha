@@ -19,8 +19,8 @@ public class Questions {
 	@Column(name = "ques_id")
 	private Long questionId;
 
-	@Column(name = "lang_id")
-	private Long languageId;
+	@Column(name = "exam_id")
+	private Long examId;
 
 	@Column(name = "question")
 	private String question;
@@ -36,12 +36,12 @@ public class Questions {
 		return questionId;
 	}
 
-	public void setLanguageId(Long languageId) {
-		this.languageId = languageId;
+	public Long getExamId() {
+		return examId;
 	}
 
-	public Long getLanguageId() {
-		return languageId;
+	public void setExamId(Long examId) {
+		this.examId = examId;
 	}
 
 	public void setQuestion(String question) {

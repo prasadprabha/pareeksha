@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.exam.model.Admin;
-import com.exam.model.Language;
-import com.exam.service.LanguageService;
+import com.exam.model.Exam;
+import com.exam.service.ExamService;
 import com.exam.validators.AddExamForm;
 import com.exam.validators.AddQuestionForm;
 
@@ -24,7 +24,7 @@ import com.exam.validators.AddQuestionForm;
 @RequestMapping("/admin/addexam")
 public class AddExamController {
 	@Autowired
-	private LanguageService languageService;
+	private ExamService examService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showAddExamForm(Map model, HttpServletRequest request,
@@ -49,16 +49,16 @@ public class AddExamController {
 			@Valid AddExamForm addExamForm, BindingResult result,
 			Map model, HttpSession session) {
 		
-		Language language = new Language();
-		language.setLanguageName(addExamForm.getLanguageName());
-		language.setLanguageId(addExamForm.getLanguageId());
-		if(StringUtils.isEmpty(addExamForm.getLanguageId())) {
-			languageService.saveLanguage(language);
+		Exam exam = new Exam();
+		exam.setExamName(addExamForm.getExamName());
+		exam.setExamId(addExamForm.getExamId());
+		if(StringUtils.isEmpty(addExamForm.getExamId())) {
+			examService.saveExam(exam);
 		} else {
-			languageService.updateLanguage(language);
+			examService.updateExam(exam);
 		}
-		addExamForm.setLanguageId(language.getLanguageId());
-		addExamForm.setLanguageName(language.getLanguageName());
+		addExamForm.setExamId(exam.getExamId());
+		addExamForm.setExamName(exam.getExamName());
 		return new ModelAndView("/admin/addexam");
 		//return new ModelAndView("redirect:questionlist.html");
 	}

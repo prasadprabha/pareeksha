@@ -5,24 +5,26 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class AddExamForm {
 
 	// @NotEmpty
-	private Long languageId;
+	private Long examId;
 
-	private String languageName;
+	private String examName;
 
-	public String getLanguageName() {
-		return languageName;
+	public Long getExamId() {
+		return examId;
 	}
 
-	public void setLanguageName(String languageName) {
-		this.languageName = languageName;
+	public void setExamId(Long examId) {
+		this.examId = examId;
 	}
 
-	public void setLanguageId(Long languageId) {
-		this.languageId = languageId;
+	public String getExamName() {
+		return examName;
 	}
 
-	public Long getLanguageId() {
-		return languageId;
+	public void setExamName(String examName) {
+		this.examName = examName;
 	}
+
+
 
 }
