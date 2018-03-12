@@ -2,22 +2,19 @@
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<!doctype html>
+<html lang="en">
+  <head>
+ <%@ include file="../header.jsp" %>  
+  </head>
 <body>
+<%@ include file="../navbar.jsp" %>  
+
+<div class="container-fluid">
+
+<div class="text-center">
   <h2 align="center" >Question Paper</h2>
  <hr width=600 >
- <div align="right" style="top:0 " >
-  <%if(session.getAttribute("userName")!=null){ %>
-    Welcome :<% out.print(session.getAttribute("userName"));%>
-  <%} %>&nbsp;
-  <a href="logout.thml" >LogOut</a> 
-</div>
-
 <form:form action="questionpaper.thml" >
  <table align="center" >
  <core:if test="${!empty questionPaperList}"> 
@@ -75,6 +72,8 @@
   </core:if>    
  </table>
 </form:form>
+</div></div>
 
+<%@ include file="../footer.jsp" %>  
 </body>
 </html>
