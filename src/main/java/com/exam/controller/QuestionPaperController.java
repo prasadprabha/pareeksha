@@ -58,6 +58,7 @@ public class QuestionPaperController {
 				questonIdList.add(i, questions.getQuestionId());
 				questionPaperCommand.setQuestionId(questions.getQuestionId());
 				questionPaperCommand.setQuestion(questions.getQuestion());
+				questionPaperCommand.setExamId(questions.getExamId());
 
 				questionOptionsList = questionOptionsService
 						.getQuestionOptionsByQuestionId(questions

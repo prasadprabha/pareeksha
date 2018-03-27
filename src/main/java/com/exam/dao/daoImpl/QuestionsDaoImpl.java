@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.exam.dao.QuestionsDao;
+import com.exam.model.Exam;
 import com.exam.model.Questions;
+import com.exam.model.Result;
 
 @Repository("questionsDao")
 public class QuestionsDaoImpl implements QuestionsDao {
@@ -72,6 +74,13 @@ public class QuestionsDaoImpl implements QuestionsDao {
 						"from Questions where examId=:examId order by rand()")
 				.setParameter("examId", examId).setMaxResults(10)
 				.list();
+	}
+	
+	
+	@Override
+	public Result saveResult(Result result) {
+		sessionFactory.getCurrentSession().save(result);
+		return result;
 	}
 
 }

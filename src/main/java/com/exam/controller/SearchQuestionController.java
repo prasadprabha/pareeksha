@@ -23,6 +23,7 @@ public class SearchQuestionController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String showSearchQuestion(Map model,HttpSession session){
+		Long userId = Long.parseLong(session.getAttribute("userId").toString());
 		   if((session.getAttribute("adminEmail"))==null){
 			   Admin admin=new Admin();
 			   model.put("admin",admin);
@@ -35,8 +36,9 @@ public class SearchQuestionController {
 	 }
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView processSearchQuestion(@Valid Exam exam,Map model){
+	public ModelAndView processSearchQuestion(@Valid Exam exam,Map model,HttpSession session){
 		   Long examId = exam.getExamId();
+		   Long userId = Long.parseLong(session.getAttribute("userId").toString());
 		   if(examId == -1){
 			  model.put("examlist", examService.listExams());
 			  model.put("errormessage", "Select Exam");

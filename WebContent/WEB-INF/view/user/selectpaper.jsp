@@ -10,7 +10,7 @@
 <body>
 <%@ include file="../navbar.jsp" %> 
 <div class="container-fluid">
-<div class="text-center">
+<div class="text-center  marginBottom_70">
 <h2 align="center" >Select Paper</h2>
  <form:form commandName="exam"   action="selectpaper.html" >
  <table align="center" >
@@ -37,8 +37,8 @@
  
 </form:form>
  </div></div>
- 
+
 <%@ include file="../footer.jsp" %>  
- 
+
 </body>
 </html>

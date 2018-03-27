@@ -21,6 +21,10 @@ public class ExamServiceImpl implements ExamService {
 		   return examDao.listExams();	 
 	 }
 	
+	public List<Exam> listEligibleExams(Long userId) {
+		return examDao.listEligibleExams(userId);
+	}
+	
 	public List<Exam> getExamByExamId(Long examId){
 		   return examDao.getExamByExamId(examId);
 	 }

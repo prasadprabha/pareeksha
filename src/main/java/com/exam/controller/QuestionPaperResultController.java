@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.exam.model.QuestionOptions;
 import com.exam.model.Questions;
+import com.exam.model.Result;
 import com.exam.model.User;
 import com.exam.service.QuestionOptionsService;
 import com.exam.service.QuestionsService;
@@ -36,11 +37,11 @@ public class QuestionPaperResultController {
 			return "/user/userlogin";
 		}
 		List<QuestionPaperCommand> questionPaperList = new ArrayList<QuestionPaperCommand>();
-		List questonIdList = (List) session.getAttribute("questonIdList");
+		List<Long> questonIdList = (List) session.getAttribute("questonIdList");
 
-		List questionlist = new ArrayList();
+		List<Questions> questionlist = new ArrayList<Questions>();
 		for (int i = 0; i < questonIdList.size(); i++) {
-			Long questionId = (Long) questonIdList.get(i);
+			Long questionId = questonIdList.get(i);
 			questionlist = questionsService
 					.getQuestionsByQuestionId(questionId);
 			if (questionlist != null && questionlist.size() > 0) {
@@ -49,6 +50,7 @@ public class QuestionPaperResultController {
 					List questionOptionsList = new ArrayList();
 					Questions questions = new Questions();
 					questions = (Questions) questionlist.get(j);
+					questionPaperCommand.setExamId(questions.getExamId());
 					questionPaperCommand.setQuestionId(questions
 							.getQuestionId());
 					questionPaperCommand.setQuestion(questions.getQuestion());
@@ -68,6 +70,20 @@ public class QuestionPaperResultController {
 				}
 			}
 		}
+		
+		
+		Integer correctAnswer = Integer.parseInt(session.getAttribute("rightAnswer").toString());
+		Integer wongAnswer = Integer.parseInt(session.getAttribute("wongAnswer").toString());
+		Long userId = Long.parseLong(session.getAttribute("userId").toString());
+		
+		Result result = new Result();
+		result.setCorrect(correctAnswer);
+		result.setWrong(wongAnswer);
+		result.setScore(correctAnswer*1);
+		result.setTotalQuestions(questionPaperList.size());
+		result.setExamid(questionPaperList.get(0).getExamId());
+		result.setUserid(userId);
+		questionsService.saveResult(result);
 
 		model.put("questionPaperList", questionPaperList);
 		model.put("totalQuestion", session.getAttribute("totalQuestion"));

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.exam.dao.QuestionsDao;
 import com.exam.model.Questions;
+import com.exam.model.Result;
 import com.exam.service.QuestionsService;
 
 @Service("questionsService")
@@ -52,4 +53,9 @@ public class QuestionsServiceImpl implements QuestionsService {
 	public List<Questions> getTenRandomQuestionsByExamId(Long examId){
 		return questionsDao.getTenRandomQuestionsByExamId(examId);  
 	 }
+	
+	@Override
+	public Result saveResult(Result result) {
+		return questionsDao.saveResult(result);
+	}
 }

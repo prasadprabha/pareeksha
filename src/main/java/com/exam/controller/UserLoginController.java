@@ -47,17 +47,21 @@ public class UserLoginController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView processUserLogin(@Valid User user,
 			BindingResult result, Map model, HttpSession session) {
-		
+		session.setAttribute( "activation-time", System.currentTimeMillis() );
 		userLoginValidator.validate(user, result);
 		if (result.hasErrors()) {
 			return new ModelAndView("/user/userlogin");
 		}
 		List userlist = userService.getUserByUserEmail(user.getUserEmail());
 		if (userlist != null && userlist.size() > 0) {
-			User user1 = new User();
-			user1 = (User) userlist.get(0);
-			session.setAttribute("userName", user1.getUserName());
-			if(user1.getUserName().equals("admin")) {
+			User userFromDB = new User();
+			userFromDB = (User) userlist.get(0);
+			Double randomNumber = Double.valueOf(Math.random());
+			session.setAttribute("userName", userFromDB.getUserName());
+			session.setAttribute("userId", userFromDB.getUserId());
+			session.setAttribute("token", randomNumber.toString());
+			
+			if(userFromDB.getUserName().equals("admin")) {
 				session.setAttribute("adminEmail", user.getUserEmail());
 				return new ModelAndView("redirect:/forms/admin/addquestion.html");
 			} else {

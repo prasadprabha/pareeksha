@@ -1,15 +1,21 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<!doctype html>
+<html lang="en">
+  <head>
+ <%@ include file="../header.jsp" %>  
+  </head>
 <body>
- <h2 align="center" >User Registration</h2>
+<%@ include file="../navbar.jsp" %>  
+
+<div class="container-fluid">
+
+<div class="text-center">
+ <h1 align="center" >User Registration</h1>
  <hr width=600 >
+ <br clear="all"> <br clear="all"> <br clear="all">
+
  <form:form action="userregistration.html" commandName="userForm" >
   <table align="center" >
     <tr>
@@ -90,9 +96,11 @@
       <input type="submit" value="Submit"/>     
     </td>
   </tr> 
-  
 </table>
 </form:form>
-
+</div>
+<br clear="all"><br clear="all">
+</div>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

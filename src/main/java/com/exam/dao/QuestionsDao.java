@@ -3,7 +3,7 @@ package com.exam.dao;
 import java.util.List;
 
 import com.exam.model.Questions;
-import com.exam.model.User;
+import com.exam.model.Result;
 
 public interface QuestionsDao {
 	public List<Questions> listQuestions();
@@ -19,5 +19,7 @@ public interface QuestionsDao {
 	public void deleteQuestions(Questions questions);
 
 	public List<Questions> getTenRandomQuestionsByExamId(Long examId);
+	
+	public Result saveResult(Result result);
 
 }

@@ -1,68 +1,60 @@
-<%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="ISO-8859-1"%>
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<%@ include file="../header.jsp"%>
 </head>
 <body>
- <h2 align="center" >Paper Result </h2>
- <hr width=600 >
-<div align="right" style="top:0 " >
-  <%if(session.getAttribute("userName")!=null){ %>
-    Welcome :<% out.print(session.getAttribute("userName"));%>
-  <%} %>&nbsp;
-  <a href="logout.thml" >LogOut</a> 
-</div>
- <table align="center" >
-   <% int i=0; %>
-  <core:forEach var="questionPaperCommand" items="${questionPaperList}" >
-     <tr>
-       <td>
-        <core:out value="<%=i+1%>"></core:out>
-        <core:out value="."></core:out>
-        <core:out value="Question :"></core:out>
-        <core:out value="${questionPaperCommand.question}"></core:out></td>
-     </tr>
-     <tr> 
-       <td>
-         <font color="green" ><core:out value="Answer : "></core:out></font>
-         <core:out value="${questionPaperCommand.option1}"></core:out>
-      </tr>
-     <% i++; %>        
-  </core:forEach>
-  <tr>
-    <td colspan="2" ><core:out value="--------------------------------------"></core:out></td>   
-  </tr>
-  <tr>
-    <td><core:out value="Result"></core:out></td>   
-  </tr>
-  <tr>
-    <td colspan="2">
-        <core:out value="Total Questions"></core:out>
-        <core:out value="${totalQuestion}"></core:out>
-    </td>   
-  </tr>
-  <tr>
-    <td colspan="2" >
-        <core:out value="Result Marks"></core:out>
-        <core:out value="${rightAnswer}"></core:out>
-    </td>   
-  </tr>
-  <tr>
-    <td colspan="2" >
-       <core:out value="Number of right answers : "></core:out>
-       <core:out value="${rightAnswer}"></core:out>
-   </td>   
-  </tr>
-  <tr>
-    <td colspan="2" >
-      <core:out value="Number of wrong answers : "></core:out>
-      <core:out value="${wongAnswer}"></core:out>
-    </td>   
-  </tr>
-</table>
+	<%@ include file="../navbar.jsp"%>
+	<div class="container-fluid">
+		<div class="text-center marginBottom_70">
+			<h2 align="center">Result</h2>
+			<%int i = 0;%>
+			<table class="table">
+				<thead>
+				    <tr>
+				      <th scope="col">No</th>
+				      <th scope="col">Question</th>
+				      <th scope="col">Answer</th>
+				    </tr>
+				  </thead>
+				<core:forEach var="questionPaperCommand"
+					items="${questionPaperList}">
+					<tr>
+						<th scope="row"><core:out value="<%=i + 1%>"></core:out></th>
+						<td class="float-none"><core:out value="${questionPaperCommand.question}"></core:out></td>
+						<td class="float-none"><font color="green"><core:out value="Answer : "></core:out></font>
+							<core:out value="${questionPaperCommand.option1}"></core:out>
+					</tr>
+					<%
+						i++;
+					%>
+				</core:forEach>
+			</table>
+			<div class="card text-green bg-light mb-3">
+				<div class="card-header">Result</div>
+				<ul class="list-group list-group-flush text-green">
+					<li class="list-group-item text-left "><core:out
+							value="Total Questions : "></core:out> <core:out
+							value="${totalQuestion}"></core:out></li>
+					<li class="list-group-item text-left"><core:out value="Result Marks : "></core:out>
+						<core:out value="${rightAnswer}"></core:out></li>
+					<li class="list-group-item text-left"><core:out
+							value="Number of right answers : "></core:out> <core:out
+							value="${rightAnswer}"></core:out></li>
+
+					<li class="list-group-item text-left"><core:out
+							value="Number of wrong answers : "></core:out> <core:out
+							value="${wongAnswer}"></core:out></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<%@ include file="../footer.jsp"%>
+
 </body>
 </html>

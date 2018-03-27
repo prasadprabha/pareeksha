@@ -6,6 +6,8 @@ import com.exam.model.Exam;
 
 public interface ExamDao {
 	public List<Exam> listExams();
+	
+	public List<Exam> listEligibleExams(Long userId);
 
 	public List<Exam> getExamByExamId(Long examId);
 	

@@ -39,6 +39,7 @@ public class AddQuestionController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String showQuestionController(Map model, HttpServletRequest request,
 			HttpSession session) {
+		Long userId = Long.parseLong(session.getAttribute("userId").toString());
 		if ((session.getAttribute("adminEmail")) == null) {
 			Admin admin = new Admin();
 			model.put("admin", admin);
@@ -110,6 +111,7 @@ public class AddQuestionController {
 	public ModelAndView processQuestionController(
 			@Valid AddQuestionForm addQuestionForm, BindingResult result,
 			Map model, HttpSession session) {
+		Long userId = Long.parseLong(session.getAttribute("userId").toString());
 		if ((session.getAttribute("adminEmail")) == null) {
 			return new ModelAndView("redirect:adminlogin.html");
 		}

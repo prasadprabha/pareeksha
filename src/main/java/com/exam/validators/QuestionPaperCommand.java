@@ -3,6 +3,7 @@ package com.exam.validators;
 public class QuestionPaperCommand {
 	private Long questionId;
 	private String examName;
+	private Long examId;
 	private String question;
 	private Long option1Id;
 	private String option1;
@@ -105,4 +106,11 @@ public class QuestionPaperCommand {
 	public String getRightAnswer(){
 		   return rightAnswer;
      } 
+	
+	public Long getExamId() {
+		return examId;
+	}
+	public void setExamId(Long examId) {
+		this.examId = examId;
+	}
 }

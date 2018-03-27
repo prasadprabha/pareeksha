@@ -44,6 +44,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 				<value>com.exam.model.Questions</value>
 				<value>com.exam.model.QuestionOptions</value>
 				<value>com.exam.model.Admin</value>
+				<value>com.exam.model.Result</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

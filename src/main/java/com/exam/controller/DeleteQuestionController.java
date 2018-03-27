@@ -30,6 +30,7 @@ public class DeleteQuestionController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView showDeleteQuestion(Map model,
 			HttpServletRequest request, HttpSession session) {
+		Long userId = Long.parseLong(session.getAttribute("userId").toString());
 		if ((session.getAttribute("adminEmail")) == null) {
 			// Admin admin=new Admin();
 			// model.put("admin",admin);

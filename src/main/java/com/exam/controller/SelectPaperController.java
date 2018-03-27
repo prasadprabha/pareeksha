@@ -23,6 +23,7 @@ public class SelectPaperController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String showSelectPaper(Map model, HttpSession session) {
+		Long userId = Long.parseLong(session.getAttribute("userId").toString());
 		if ((session.getAttribute("userEmail")) == null) {
 			User user = new User();
 			model.put("user", user);
@@ -30,13 +31,14 @@ public class SelectPaperController {
 		}
 		Exam exam = new Exam();
 		model.put("exam", exam);
-		model.put("examlist", examService.listExams());
+		model.put("examlist", examService.listEligibleExams(userId));
 		return "/user/selectpaper";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView processSelectPaper(@Valid Exam exam, Map model,
 			HttpSession session) {
+		Long userId = Long.parseLong(session.getAttribute("userId").toString());
 		if ((session.getAttribute("userEmail")) == null) {
 			return new ModelAndView("redirect:userlogin.html");
 		}

@@ -63,6 +63,7 @@ public class QuestionListController {
 				Exam exam = (Exam) examList.get(0);
 				questionPaperCommand
 						.setExamName(exam.getExamName());
+				questionPaperCommand.setExamId(exam.getExamId());
 			}
 
 			questionOptionsList = questionOptionsService
